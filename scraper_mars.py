@@ -61,7 +61,7 @@ def scrape_data():
     html = browser.html
     soup = bs(html, "html.parser")
     full_res = soup.find_all(class_='download_tiff')[1].a['href']
-    # image_string = 'https:' + full_res
+    image_string = 'https:' + full_res
 
     url = 'https://twitter.com/MarsWxReport'
     browser.visit(url)
@@ -87,7 +87,7 @@ def scrape_data():
             res.append(row)
 
 
-    df = pd.DataFrame(res, columns=["Stat", "Value"])
+    df = pd.DataFrame(res, columns=["Factoid", "Data"])
     # print(df)
     tblMars = df.to_html(index=False)
     # make mars data html table
@@ -126,6 +126,7 @@ def scrape_data():
     browser.quit()
 
     marsData = {
+        "featuredimg": image_string,
         "Headline": hl,
         "newPara": pg,
         "nwsDate": dt,

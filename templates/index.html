@@ -23,6 +23,21 @@
         <h4 class="heading">{{Mars.Headline}} {{Mars.newPara}}</h4>
         <small>{{Mars.nwsDate}}</small>
       </div>
+            <h1 class="jumbotron">Inventory</h1>
+      <div>
+        <!-- write a for loop that lists out your data and accesses the values using dot notation. -->
+          {% for item in Mars.hemi %}
+          <div class="col-lg-4">
+              <div class="card" style="width: 20rem;">
+                  <div class="card-body">
+                    <h4 class="card-title">{{ item.title }}</h4>
+                    <h6 class="card-subtitle mb-2 text-muted">Cost: {{ item.img_url }}</h6>
+                  </div>
+                </div>
+            </div>
+            {% endfor %}
+      </div>
+
     </div>
 
   </div>

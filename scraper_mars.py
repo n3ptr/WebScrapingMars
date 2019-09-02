@@ -122,15 +122,7 @@ def scrape_data():
 
     browser.quit()
 
-    # marsData = {
-    #     "Headline": hl,
-    #     "newPara": pg,
-    #     "nwsDate": dt,
-    #     'MarsWeather': MarsWeather,
-    #     'MarsFacts': tblMars,
-    #     'hemi': hemisphere_image_urls
-    # }
-        marsData = {
+    marsData = {
         "Headline": hl,
         "newPara": pg,
         "nwsDate": dt,

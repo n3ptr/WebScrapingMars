@@ -2,74 +2,78 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Mars and Mars accessories</title>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Mars and Mars accessories</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 </head>
 
 <body>
-  <div class="container">
+<div class="container">
     <div class="jumbotron text-center">
-      <h1>Mars News and Stats</h1>
-      <p><a class="btn btn-primary btn-lg" href="/scrape" role="button">What's the latest on Mars?</a></p>
+        <h1>Mars News and Stats</h1>
+        <p><a class="btn btn-primary btn-lg" href="/scrape" role="button">What's the latest on Mars?</a></p>
     </div>
-
-    <div class="card mb-2">
-          <div class="card-body">
-            <h5 class="text-primary">Latest Mars News</h5>
-            <!-- <img class="card-img-top" src="resources/LatitudevsTemperaturePlot.png" style="float:left;width:340px;height:340px;" alt="Card image cap"> -->
-              <!-- <p class="text-primary">.text-primary</p> -->
-            <h4 class="heading">{{Mars.Headline}}</h4>
-            <small>{{Mars.newPara}}</small>
-            <small>{{Mars.nwsDate}}</small>
-            <div class="col-xl-6  col-lg-5 col-md-3 col-sm-12 col-xs-12">
-                <img src="{{ Mars.featuredimg }}"  style='width:80%;' border="1" alt="Featured Image">
-<!--            <p class="card-text">The purpose of this project was to analyze how weather changes as you get closer to the equator. To accomplish this analysis, we first pulled data from the OpenWeatherMap API to assemble a dataset on over 500 cities.</p>-->
-            <div class="col-xl-6  col-lg-5 col-md-3 col-sm-12 col-xs-12">
-              <div class="card mb-2">
-                {{Mars.MarsWeather}}
+    <h5 class="text-primary">Latest Mars News</h5>
+    <div class="container">
+        <h2 class="heading">{{Mars.Headline}}</h2>
+        <div class="panel panel-default">
+            <div class="panel-body">{{Mars.newPara}}
+                <small>{{Mars.nwsDate}}</small>
             </div>
-          </div>
         </div>
-
-    <div class="row" id="craiglist-listings">
-      <div class="col-md-12">
-        <h4 class="heading">{{Mars.Headline}}</h4>
-        <div>
-          <h6 class="heading"> {{Mars.newPara}}</h6>
-          <small>{{Mars.nwsDate}}</small>
-        </div>
-        <div>
-        <h4>{{Mars.MarsWeather}}</h4>
-        </div>
-        <div>
-          <h4>Featured Image</h4>
-<!--          <div>-->
-<!--            <img src="{{ Mars.featuredimg }}" alt="Today's Image">-->
-<!--          </div>-->
-        </div>
-       <div class="container-fluid" id="marsfacts">
-           <h4>Mars Facts</h4>
-           <p>{{Mars.MarsFacts | safe}}</p>
-       </div>
-        <!-- write a for loop that lists out your data and accesses the values using dot notation. -->
-          {% for item in Mars.hemi %}
-          <div class="col-lg-4">
-              <div class="card" style="width: 20rem;">
-                  <div class="card-body">
-                    <h4 class="card-title">{{ item.title }}</h4>
-<!--                    <img src="{{ item.img_url }}" alt="{{ item.title }}">-->
-                    <img src="{{ item.img_url }}" alt="{{ item.title }}"  style='width:80%;' border="1" >
-                  </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-6  col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                <h4>Featured Image</h4>
+                <img src="{{ Mars.featuredimg }}" style='width:80%;' border="1" alt="Featured Image">
+            </div>
+            <div class="col-xl-6  col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                <h3>Weather on Mars</h3>
+                <div class="panel panel-default">
+                    <div class="panel-body">{{Mars.MarsWeather}}</div>
                 </div>
             </div>
-            {% endfor %}
-      </div>
+        </div>
     </div>
+    <!--    <div class="row" id="craiglist-listings">-->
+    <!--      <div class="col-md-12">-->
+    <!--        <h4 class="heading">{{Mars.Headline}}</h4>-->
+    <!--        <div>-->
+    <!--          <h6 class="heading"> {{Mars.newPara}}</h6>-->
+    <!--          <small>{{Mars.nwsDate}}</small>-->
+    <!--        </div>-->
+    <!--        <div>-->
+    <!--        <h4>{{Mars.MarsWeather}}</h4>-->
+    <!--        </div>-->
+    <!--        <div>-->
+    <!--          <h4>Featured Image</h4>-->
+    <!--&lt;!&ndash;          <div>&ndash;&gt;-->
+    <!--&lt;!&ndash;            <img src="{{ Mars.featuredimg }}" alt="Today's Image">&ndash;&gt;-->
+    <!--&lt;!&ndash;          </div>&ndash;&gt;-->
+    <!--        </div>-->
+    <!--       <div class="container-fluid" id="marsfacts">-->
+    <!--           <h4>Mars Facts</h4>-->
+    <!--           <p>{{Mars.MarsFacts | safe}}</p>-->
+    <!--       </div>-->
+    <!--        &lt;!&ndash; write a for loop that lists out your data and accesses the values using dot notation. &ndash;&gt;-->
+    <!--          {% for item in Mars.hemi %}-->
+    <!--          <div class="col-lg-4">-->
+    <!--              <div class="card" style="width: 20rem;">-->
+    <!--                  <div class="card-body">-->
+    <!--                    <h4 class="card-title">{{ item.title }}</h4>-->
+    <!--&lt;!&ndash;                    <img src="{{ item.img_url }}" alt="{{ item.title }}">&ndash;&gt;-->
+    <!--                    <img src="{{ item.img_url }}" alt="{{ item.title }}"  style='width:80%;' border="1" >-->
+    <!--                  </div>-->
+    <!--                </div>-->
+    <!--            </div>-->
+    <!--            {% endfor %}-->
+    <!--      </div>-->
+    <!--    </div>-->
 
-  </div>
+    <!--  </div>-->
 </body>
 
 </html>

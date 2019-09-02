@@ -29,7 +29,9 @@
         <div class="row">
             <div class="col-xl-6  col-lg-6 col-md-6 col-sm-12 col-xs-12">
                 <h4>Featured Image</h4>
-                <img src="{{ Mars.featuredimg }}" style='width:80%;' border="1" alt="Featured Image">
+                <div class="container-fluid" id="imagecontainer">
+                <img src="{{ Mars.featuredimg }}" style='width:95%;' border="1" alt="Featured Image">
+                </div>
             </div>
             <div class="col-xl-6  col-lg-6 col-md-6 col-sm-12 col-xs-12">
                 <h3>Weather on Mars</h3>
@@ -43,45 +45,22 @@
             </div>
         </div>
     </div>
-
-    {% for item in Mars.hemi %}
-    <div class="container">
+    <h3 class="heading">Mars Hemispheres</h3>
+    <div class="panel panel-default">
+        {% for item in Mars.hemi | batch(2, '&nbsp;') %}
         <div class="row">
+            {% for article in item %}
             <div class="col-xl-6  col-lg-6 col-md-6 col-sm-12 col-xs-12">
                 <div class="container-fluid" id="imagecontainer">
-                    <h4 class="card-title">{{ item.title }}</h4>
-                    <img src="{{ item.img_url }}" alt="{{ item.title }}" style='width:90%;' border="1">
+                    <div class="span4">{{ article.title }}</div>
+                    <img src="{{ article.img_url }}" alt="{{ article.title }}" style='width:85%;' border="1">
                 </div>
+                </div>
+                {% endfor %}
             </div>
+            {% endfor %}
         </div>
-    </div>
-    {% endfor %}
-    <!--    <div class="row" id="craiglist-listings">-->
-    <!--      <div class="col-md-12">-->
-    <!--        <h4 class="heading">{{Mars.Headline}}</h4>-->
-    <!--        <div>-->
-    <!--          <h6 class="heading"> {{Mars.newPara}}</h6>-->
-    <!--          <small>{{Mars.nwsDate}}</small>-->
-    <!--        </div>-->
-    <!--        <div>-->
-    <!--        <h4>{{Mars.MarsWeather}}</h4>-->
-    <!--        </div>-->
-    <!--        <div>-->
-    <!--          <h4>Featured Image</h4>-->
-    <!--&lt;!&ndash;          <div>&ndash;&gt;-->
-    <!--&lt;!&ndash;            <img src="{{ Mars.featuredimg }}" alt="Today's Image">&ndash;&gt;-->
-    <!--&lt;!&ndash;          </div>&ndash;&gt;-->
-    <!--        </div>-->
-    <!--       <div class="container-fluid" id="marsfacts">-->
-    <!--           <h4>Mars Facts</h4>-->
-    <!--           <p>{{Mars.MarsFacts | safe}}</p>-->
-    <!--       </div>-->
-    <!--        &lt;!&ndash; write a for loop that lists out your data and accesses the values using dot notation. &ndash;&gt;-->
 
-    <!--      </div>-->
-    <!--    </div>-->
-
-    <!--  </div>-->
 </body>
 
 </html>

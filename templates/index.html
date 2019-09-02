@@ -17,9 +17,10 @@
     </div>
     <h5 class="text-primary">Latest Mars News</h5>
     <div class="container">
-        <h2 class="heading">{{Mars.Headline}}</h2>
+        <h3 class="heading">{{Mars.Headline}}</h3>
         <div class="panel panel-default">
-            <div class="panel-body">{{Mars.newPara}}
+            <div class="panel-body">
+                {{Mars.newPara}}
                 <small>{{Mars.nwsDate}}</small>
             </div>
         </div>
@@ -35,9 +36,26 @@
                 <div class="panel panel-default">
                     <div class="panel-body">{{Mars.MarsWeather}}</div>
                 </div>
+                <div class="panel-body">
+                    <h3>Mars Facts</h3>
+                    {{Mars.MarsFacts | safe}}
+                </div>
             </div>
         </div>
     </div>
+
+    {% for item in Mars.hemi %}
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-6  col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                <div class="container-fluid" id="imagecontainer">
+                    <h4 class="card-title">{{ item.title }}</h4>
+                    <img src="{{ item.img_url }}" alt="{{ item.title }}" style='width:90%;' border="1">
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
     <!--    <div class="row" id="craiglist-listings">-->
     <!--      <div class="col-md-12">-->
     <!--        <h4 class="heading">{{Mars.Headline}}</h4>-->
@@ -59,17 +77,7 @@
     <!--           <p>{{Mars.MarsFacts | safe}}</p>-->
     <!--       </div>-->
     <!--        &lt;!&ndash; write a for loop that lists out your data and accesses the values using dot notation. &ndash;&gt;-->
-    <!--          {% for item in Mars.hemi %}-->
-    <!--          <div class="col-lg-4">-->
-    <!--              <div class="card" style="width: 20rem;">-->
-    <!--                  <div class="card-body">-->
-    <!--                    <h4 class="card-title">{{ item.title }}</h4>-->
-    <!--&lt;!&ndash;                    <img src="{{ item.img_url }}" alt="{{ item.title }}">&ndash;&gt;-->
-    <!--                    <img src="{{ item.img_url }}" alt="{{ item.title }}"  style='width:80%;' border="1" >-->
-    <!--                  </div>-->
-    <!--                </div>-->
-    <!--            </div>-->
-    <!--            {% endfor %}-->
+
     <!--      </div>-->
     <!--    </div>-->
 

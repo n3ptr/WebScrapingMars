@@ -89,9 +89,12 @@ def scrape_data():
 
     df = pd.DataFrame(res, columns=["Stat", "Value"])
     # print(df)
-    tblMars = df.to_html()
+    tblMars = df.to_html(index=False)
+    # make mars data html table
+    # with open('templates/MarsFacts.html', 'w') as fo:
+    #     df.to_html(fo)
 
-    print(tblMars)
+    # print(tblMars)
 
     #hemispheres
     url = 'https://astrogeology.usgs.gov/search/results?q=hemisphere+enhanced&k1=target&v1=Mars'

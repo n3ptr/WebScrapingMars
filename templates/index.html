@@ -25,19 +25,25 @@
       </div>
             <h1 class="jumbotron">Inventory</h1>
       <div>
+        <div>
+        <h4>{{Mars.MarsWeather}}</h4>
+        </div>
+       <div class="container-fluid" id="marsfacts">
+           <h4>Mars Facts</h4>
+           <p>{{Mars.MarsFacts | safe}}</p>
+       </div>
         <!-- write a for loop that lists out your data and accesses the values using dot notation. -->
           {% for item in Mars.hemi %}
           <div class="col-lg-4">
               <div class="card" style="width: 20rem;">
                   <div class="card-body">
                     <h4 class="card-title">{{ item.title }}</h4>
-                    <h6 class="card-subtitle mb-2 text-muted">Cost: {{ item.img_url }}</h6>
+                    <img src="{{ item.img_url }}" alt="{{ item.title }}">
                   </div>
                 </div>
             </div>
             {% endfor %}
       </div>
-
     </div>
 
   </div>

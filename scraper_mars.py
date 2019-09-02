@@ -3,14 +3,13 @@ from bs4 import BeautifulSoup as bs
 import requests
 import pandas as pd
 import time
-# from lxml import etree
 
 def init_browser():
     # @NOTE: Replace the path with your actual path to the chromedriver
     executable_path = {"executable_path": "/usr/local/bin/chromedriver"}
     return Browser("chrome", **executable_path, headless=False)
 
-def scrape():
+def scrape_data():
     browser = init_browser()
 
     url = "https://mars.nasa.gov/news/?page=0&per_page=40&order=publish_date+desc%2Ccreated_at+desc&search=&category=19%2C165%2C184%2C204&blank_scope=Latest"
@@ -18,7 +17,7 @@ def scrape():
     time.sleep(4)
 
     i=0
-    listings = []
+    MarsData = []
     headlines = []
     paragraphs = []
     nwsDates = []
@@ -43,8 +42,11 @@ def scrape():
         i += 1
 
     print(headlines[0])
+    hl = headlines[0]
     print(paragraphs[0])
+    pg = paragraphs[0]
     print(nwsDates[0])
+    dt = nwsDates[0]
 
     url = "https://www.jpl.nasa.gov/spaceimages/?search=&category=Mars"
     browser.visit(url)
@@ -68,7 +70,7 @@ def scrape():
     soup = bs(html, "html.parser")
 
     Mars_Weather = soup.find_all(class_='js-tweet-text-container')
-    Mars_Weather[1].text
+    MarsWeather = Mars_Weather[1].text
 
     # mars facts
     url = 'https://space-facts.com/mars/'
@@ -119,9 +121,22 @@ def scrape():
     print(hemisphere_image_urls)
 
     browser.quit()
-    #
-    # listings.append (headlines[0] + ' ' + nwsDates[0])
-    # listings["price"] = paragraphs[0]
-    # listings["hood"] = Mars_Weather[1].text
 
-    return tblMars
+    # marsData = {
+    #     "Headline": hl,
+    #     "newPara": pg,
+    #     "nwsDate": dt,
+    #     'MarsWeather': MarsWeather,
+    #     'MarsFacts': tblMars,
+    #     'hemi': hemisphere_image_urls
+    # }
+        marsData = {
+        "Headline": hl,
+        "newPara": pg,
+        "nwsDate": dt,
+        'MarsWeather': MarsWeather,
+        'MarsFacts': tblMars,
+        'hemi': hemisphere_image_urls
+    }
+
+    return marsData
